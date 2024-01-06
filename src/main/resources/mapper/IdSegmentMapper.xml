@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guochenxu.gid.mapper.IdSegmentMapper">
+
+    <resultMap type="com.guochenxu.gid.entity.IdSegment" id="IdSegmentMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="tag" column="tag" jdbcType="VARCHAR"/>
+        <result property="startId" column="start_id" jdbcType="INTEGER"/>
+        <result property="step" column="step" jdbcType="INTEGER"/>
+        <result property="comment" column="comment" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+</mapper>
+
