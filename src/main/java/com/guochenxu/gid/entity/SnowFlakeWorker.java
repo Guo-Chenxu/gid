@@ -37,7 +37,7 @@ public class SnowFlakeWorker {
         this.number = _number;
     }
 
-    public static long getSnowFlakeId() {
+    public static synchronized long getSnowFlakeId() {
         return SnowFlakeUtil.generateId(worker);
     }
 }

@@ -8,9 +8,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Repeat;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.concurrent.*;
 
 /**
  * 雪花id测试
@@ -25,15 +24,12 @@ public class SnakeFlakeIdTest {
 
 
     @Test
-    public void testGenerateID() {
+    public void testOneThread() {
         for (int i = 0; i < 100; i++) {
             long snowFlakeId = SnowFlakeWorker.getSnowFlakeId();
             System.out.println(snowFlakeId);
         }
-    }
 
-    @Test
-    public void testGenerateIDBench() {
         long start = System.currentTimeMillis();
         Set<Long> set = new HashSet<>();
         long count = 0, id = -1;
@@ -48,5 +44,40 @@ public class SnakeFlakeIdTest {
             set.add(id);
         }
         log.info("1秒生成id个数: {}", count);
+    }
+
+    @Test
+    public void testMultiThread() {
+        ExecutorService executorService = Executors.newFixedThreadPool(10);
+        Callable<Long> task = SnowFlakeWorker::getSnowFlakeId;
+        List<Future<Long>> futures = new ArrayList<>();
+
+        int num = 100;
+        for (int i = 0; i < num; i++) {
+            Future<Long> future = executorService.submit(task);
+            futures.add(future);
+        }
+
+        // 等待所有任务完成，并获取结果
+        Set<Long> set = new ConcurrentSkipListSet<>();
+        for (Future<Long> future : futures) {
+            try {
+                long id = future.get();
+
+                if (set.contains(id)) {
+                    log.error("重复id: {}", id);
+                    return;
+                }
+                set.add(id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        executorService.shutdown();
+
+        if (set.size() == num) {
+            log.info("并发安全");
+        }
     }
 }

@@ -24,7 +24,7 @@ public class SnowFlakeUtil {
      *
      * @param worker 工作机器信息
      */
-    public static synchronized long generateId(SnowFlakeWorker worker) {
+    public static long generateId(SnowFlakeWorker worker) {
         if (worker.getWorkerId() > WORKER_MAX) {
             throw new RuntimeException("workId 不正确, 工作机器编号不允许大于 " + WORKER_MAX);
         }
