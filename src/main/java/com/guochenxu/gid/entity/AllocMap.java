@@ -15,7 +15,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * @create: 2024-01-06 17:19
  * @version: 1.0
  */
-@Data
 public class AllocMap {
 
     @Data
@@ -52,5 +51,9 @@ public class AllocMap {
 
     public static Alloc getByTag(String tag) {
         return map.get(tag);
+    }
+
+    private AllocMap() {
+
     }
 }
