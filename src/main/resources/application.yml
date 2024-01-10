@@ -24,6 +24,6 @@ mybatis-plus:
       id-type: ASSIGN_ID
 
 
-#logging:
-#  file:
-#    path: ./logs
+logging:
+  file:
+    path: ./logs

@@ -145,7 +145,6 @@ public class IdSegmentServiceImpl extends ServiceImpl<IdSegmentMapper, IdSegment
 
 
     /**
-     * todo 事务待测试
      * 更新数据库的号段
      */
     public IdSegment updateIdSegment(String tag) {
