@@ -35,7 +35,7 @@ public interface IdSegmentMapper extends BaseMapper<IdSegment> {
     /**
      * 通过tag获取下一个号段的起始id
      */
-    @Select("select start_id from id_segment where tag = #{tag}")
-    long getStartIdByTag(@Param("tag") String tag);
+    @Select("select start_id, step from id_segment where tag = #{tag}")
+    IdSegment getStartIdByTag(@Param("tag") String tag);
 }
 

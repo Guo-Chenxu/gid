@@ -14,6 +14,8 @@ import lombok.NoArgsConstructor;
 import lombok.Builder;
 import org.springframework.stereotype.Indexed;
 
+import javax.validation.constraints.NotNull;
+
 
 /**
  * (IdSegment)表实体类
@@ -34,16 +36,19 @@ public class IdSegment implements Serializable {
     @TableId(type = IdType.ASSIGN_ID)
     private Long id;
 
+    @NotNull
     private String tag;
 
     /**
      * 每个号段起始id
      */
+    @NotNull
     private Long startId;
 
     /**
      * 号段的步长
      */
+    @NotNull
     private Long step;
 
     private String comment;

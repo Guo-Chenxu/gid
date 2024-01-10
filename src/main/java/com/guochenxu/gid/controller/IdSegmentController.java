@@ -19,7 +19,6 @@ import javax.annotation.Resource;
  * @version: 1.0
  */
 @RestController
-@RequestMapping("id")
 public class IdSegmentController {
 
     @Resource
@@ -52,6 +51,9 @@ public class IdSegmentController {
     @GetMapping("/id/{tag}")
     public R<GetIdResp> getId(@PathVariable("tag") String tag) {
         long id = idSegmentService.getId(tag);
+        if (id == -1) {
+            throw new RuntimeException("获取id失败, 请稍后重试");
+        }
         GetIdResp resp = GetIdResp.builder().id(id).tag(tag).build();
         return new R<GetIdResp>().success(resp);
     }

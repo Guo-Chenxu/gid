@@ -17,6 +17,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class AllocMap {
 
+
     @Data
     @AllArgsConstructor
     @NoArgsConstructor
@@ -26,7 +27,7 @@ public class AllocMap {
         /**
          * 当前是否在查询数据库
          */
-        private boolean getDB = false;
+        private volatile boolean getDB = false;
 
     }
 
@@ -45,8 +46,23 @@ public class AllocMap {
 
     private static final ConcurrentHashMap<String, Alloc> map = new ConcurrentHashMap<>();
 
+    /**
+     * 添加tag
+     */
     public static void addTag(String tag) {
         map.put(tag, new Alloc(tag, new ArrayList<>(2), false));
+    }
+
+    public static void addTag(String tag, long start, long step) {
+        map.put(tag, new Alloc(tag, new ArrayList<>(2), false));
+        map.get(tag).getIdSegs().add(new IdSeg(0, start, start + step));
+    }
+
+    /**
+     * 查看是否包含该tag
+     */
+    public static boolean containsTag(String tag) {
+        return map.containsKey(tag);
     }
 
     public static Alloc getByTag(String tag) {
