@@ -42,7 +42,7 @@ public class IdSegmentServiceImpl extends ServiceImpl<IdSegmentMapper, IdSegment
     @Resource
     private TransactionDefinition transactionDefinition;
     private static final long DEFAULT_START_ID = 0L; // 默认起始id
-    private static final long DEFAULT_STEP = 20L; // 默认step
+    private static final long DEFAULT_STEP = 2000L; // 默认step
     private static final int TRY_NUM = 3; // 默认失败重试次数
     private static final int MAX_WAITING_TIME = 3000; // 等待超时最大时间, 3000ms
 
@@ -67,10 +67,12 @@ public class IdSegmentServiceImpl extends ServiceImpl<IdSegmentMapper, IdSegment
     @Override
     public long getId(String tag) {
         // 不存在先创建
-        if (!AllocMap.containsTag(tag)) {
-            boolean created = this.createTag(IdSegment.builder().tag(tag).startId(DEFAULT_START_ID).step(DEFAULT_STEP).build());
-            if (!created) {
-                throw new RuntimeException("创建tag失败");
+        synchronized (AllocMap.class) {
+            if (!AllocMap.containsTag(tag)) {
+                boolean created = this.createTag(IdSegment.builder().tag(tag).startId(DEFAULT_START_ID).step(DEFAULT_STEP).build());
+                if (!created) {
+                    throw new RuntimeException("创建tag失败");
+                }
             }
         }
 

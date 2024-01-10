@@ -27,7 +27,7 @@ public class AllocMap {
         /**
          * 当前是否在查询数据库
          */
-        private volatile boolean getDB = false;
+        private boolean getDB = false;
 
     }
 
