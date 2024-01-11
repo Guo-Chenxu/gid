@@ -1,23 +1,19 @@
 package com.guochenxu.gid.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 import com.guochenxu.gid.entity.AllocMap;
 import com.guochenxu.gid.entity.IdSegment;
 import com.guochenxu.gid.entity.SnowFlakeWorker;
 import com.guochenxu.gid.mapper.IdSegmentMapper;
-import com.guochenxu.gid.service.IdSegmentService;
-import lombok.Data;
+import com.guochenxu.gid.service.GIdService;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
@@ -31,7 +27,7 @@ import java.util.concurrent.TimeUnit;
  */
 @Service("idSegmentService")
 @Slf4j
-public class IdSegmentServiceImpl extends ServiceImpl<IdSegmentMapper, IdSegment> implements IdSegmentService {
+public class GIdServiceImpl extends ServiceImpl<IdSegmentMapper, IdSegment> implements GIdService {
 
     @Resource
     private IdSegmentMapper idSegmentMapper;

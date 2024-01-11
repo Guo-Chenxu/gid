@@ -6,15 +6,17 @@
 -   [x] 雪花 ID 生成算法
 -   [x] 解决雪花 ID 时钟回拨问题
 -   [x] HTTP 接口调用
--   [ ] gRPC 调用
+-   [x] gRPC 调用
 
 ## 使用方法
-
-启动项目
 
 [http 接口](https://apifox.com/apidoc/shared-c6883ac2-816a-4fed-ac74-abeb51f5ed3b)如下:
 
 https://apifox.com/apidoc/shared-c6883ac2-816a-4fed-ac74-abeb51f5ed3b
+
+[gRPC 接口规范](./src/main/proto/gid.proto)
+
+[gRPC 调用范例](./src/test/java/com/guochenxu/gid/GRPCTest.java)
 
 ## 性能测试
 

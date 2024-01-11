@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+option java_package = "com.guochenxu.gid.protobuf";
+option java_outer_classname = "GIDServiceApi";
+option java_multiple_files = true;
+
+package com.guochenxu.gid.protobuf;
+
+// ping
+message PingReq {
+}
+message PingResp {
+  string message = 1;
+}
+
+// 创建tag
+message CreateTagReq{
+  string tag = 1;
+  int64 startId = 2;
+  int64 step = 3;
+  string comment = 4;
+}
+message CreateTagResp{
+  bool success = 1;
+}
+
+// 获取自增id
+message GetIdReq{
+  string tag = 1;
+}
+message GetIdResp{
+  int64 id = 1;
+}
+
+// 获取雪花id
+message GetSnowId{
+}
+message GetSnowIdResp{
+  int64 id = 1;
+}
+
+service RPCDateService {
+  rpc ping (PingReq) returns (PingResp);
+  rpc createTag (CreateTagReq) returns (CreateTagResp);
+  rpc getId (GetIdReq) returns (GetIdResp);
+  rpc getSnowId (GetSnowId) returns (GetSnowIdResp);
+}

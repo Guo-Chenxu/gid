@@ -10,7 +10,7 @@ import com.guochenxu.gid.entity.IdSegment;
  * @create: 2024-01-06 16:11:28
  * @version: 1.0
  */
-public interface IdSegmentService extends IService<IdSegment> {
+public interface GIdService extends IService<IdSegment> {
 
     /**
      * 检测接口

@@ -1,10 +1,8 @@
 package com.guochenxu.gid;
 
-import com.guochenxu.gid.entity.SnowFlakeWorker;
-import com.guochenxu.gid.service.IdSegmentService;
+import com.guochenxu.gid.service.GIdService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.parallel.ResourceLock;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
@@ -25,7 +23,7 @@ import java.util.concurrent.*;
 public class GidTest {
 
     @Resource
-    private IdSegmentService idSegmentService;
+    private GIdService idSegmentService;
 
     @Test
     public void testMultiSameTag() {

@@ -9,6 +9,8 @@ spring:
     password: 101325
   main:
     allow-bean-definition-overriding: true
+  application:
+    name: gid
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
@@ -27,3 +29,12 @@ mybatis-plus:
 logging:
   file:
     path: ./logs
+grpc:
+  server:
+    port: 25781
+  client:
+    grpc-server:
+      address: static://127.0.0.1:25781
+      enable-keep-alive: true
+      keep-alive-without-calls: true
+      negotiation-type: plaintext
