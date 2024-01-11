@@ -1,4 +1,4 @@
-# gid-~~分布式~~ID 生成器
+# gid-分布式唯一 ID 生成器
 
 ## 实现功能
 
@@ -10,9 +10,7 @@
 
 ## 使用方法
 
-[http 接口](https://apifox.com/apidoc/shared-c6883ac2-816a-4fed-ac74-abeb51f5ed3b)如下:
-
-https://apifox.com/apidoc/shared-c6883ac2-816a-4fed-ac74-abeb51f5ed3b
+[http 接口](https://apifox.com/apidoc/shared-c6883ac2-816a-4fed-ac74-abeb51f5ed3b)
 
 [gRPC 接口规范](./src/main/proto/gid.proto)
 
