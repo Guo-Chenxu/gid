@@ -37,3 +37,5 @@ build/
 
 logs/
 *.log
+
+application-*.yml

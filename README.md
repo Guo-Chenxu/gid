@@ -18,15 +18,27 @@
 
 ## 性能测试
 
-本机使用 Apache JMeter 测试, 测试文件见[gid-jmx](./gid.jmx)
+使用 K6 测试, 100 个虚拟用户循环 1 分钟, 测试文件见[auto-id.js](test/auto-id.js) 和 [snowId.js](test/snowId.js)
 
-号段大小为 1000 的情况下, 自增 ID 接口 QPS 为 4000
+### 本地测试 (Windows 10, R7-5800HS, 16G)
 
-<img src="https://cdn.jsdelivr.net/gh/Guo-Chenxu/imgs@main/imgs/202401102109225.png"/>
+号段大小为 1000 的情况下, 自增 ID 接口 QPS 为 12000
 
-雪花 ID 接口 QPS 为 4200
+<img src="https://cdn.jsdelivr.net/gh/Guo-Chenxu/imgs@main/imgs/202402131743101.png"/>
 
-<img src="https://cdn.jsdelivr.net/gh/Guo-Chenxu/imgs@main/imgs/202401102111283.png"/>
+雪花 ID 接口 QPS 为 12000
+
+<img src="https://cdn.jsdelivr.net/gh/Guo-Chenxu/imgs@main/imgs/202402131745389.png"/>
+
+### 服务器测试 (腾讯云, Ubuntu 20.04, 2C2G)
+
+号段大小为 1000 的情况下, 自增 ID 接口 QPS 为 1550
+
+<img src="https://cdn.jsdelivr.net/gh/Guo-Chenxu/imgs@main/imgs/202402131812227.png"/>
+
+雪花 ID 接口 QPS 为 1590
+
+<img src="https://cdn.jsdelivr.net/gh/Guo-Chenxu/imgs@main/imgs/202402131814699.png"/>
 
 ## 参考资料
 
