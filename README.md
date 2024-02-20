@@ -10,7 +10,9 @@
 
 ## 使用方法
 
-[http 接口](https://apifox.com/apidoc/shared-c6883ac2-816a-4fed-ac74-abeb51f5ed3b)
+[http 接口文档 (swagger)](https://gid.chenxutalk.top/swagger-ui/index.html)
+
+[http 接口 (apifox)](https://apifox.com/apidoc/shared-c6883ac2-816a-4fed-ac74-abeb51f5ed3b)
 
 [gRPC 接口规范](./src/main/proto/gid.proto)
 

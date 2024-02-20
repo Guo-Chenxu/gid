@@ -32,6 +32,11 @@ public class AspectConfig {
         ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = requestAttributes.getRequest();
 
+        // 忽略 swagger 相关文档的日志
+        if (request.getRequestURI().contains("/v2/api-docs") || request.getRequestURI().contains("/swagger-resources")) {
+            return joinPoint.proceed(joinPoint.getArgs());
+        }
+
         String traceId = IdUtil.getSnowflakeNextIdStr();
 
         log.info("\n============================Request Come In============================\n" +

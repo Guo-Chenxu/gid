@@ -6,6 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
@@ -14,6 +15,7 @@ import java.util.List;
 @SpringBootApplication
 @EnableAsync
 @Slf4j
+@EnableSwagger2
 public class GidApplication {
 
     @Resource
