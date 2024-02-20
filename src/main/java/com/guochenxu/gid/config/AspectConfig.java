@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -41,11 +42,13 @@ public class AspectConfig {
 
         log.info("\n============================Request Come In============================\n" +
                         "Trace Id={}\n" +
+                        "Time={}\n" +
                         "URL={}\n" +
                         "Request Method={}\n" +
                         "Signature={}\n" +
                         "Parameter={}\n",
                 traceId,
+                new Date(),
                 Optional.of(request.getRequestURI().toString()).orElse(null), request.getMethod(),
                 joinPoint.getSignature(),
                 JSONObject.toJSONString(filterArgs(joinPoint.getArgs())));
@@ -56,9 +59,10 @@ public class AspectConfig {
 
         log.info("\n============================Response Return============================\n" +
                         "Trace Id={}\n" +
+                        "Time={}\n" +
                         "Consume Time={}ms\n" +
                         "Response={}\n",
-                traceId, end - start, JSONObject.toJSONString(result));
+                traceId, new Date(), end - start, JSONObject.toJSONString(result));
 
         return result;
     }
