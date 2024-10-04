@@ -10,7 +10,7 @@
 
 ## 使用方法
 
-[http 接口文档 (swagger)](https://gid.chenxutalk.top/swagger-ui/index.html)
+[//]: # ([http 接口文档 &#40;swagger&#41;]&#40;https://gid.chenxutalk.top/swagger-ui/index.html&#41;)
 
 [http 接口 (apifox)](https://apifox.com/apidoc/shared-c6883ac2-816a-4fed-ac74-abeb51f5ed3b)
 
